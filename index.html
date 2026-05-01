@@ -1,1 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Randle.Art — Prints & Apparel</title>
+  <meta name="description" content="Original art prints and apparel by Randle. Globally delivered." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.5/default/snipcart.css" />
+  <style>
+    :root {
+      --cream: #f7f5f2;
+      --warm-white: #faf9f7;
+      --charcoal: #1a1a18;
+      --mid: #6b6860;
+      --light: #c8c4bc;
+      --accent: #c4a882;
+      --display: 'Cormorant Garamond', Georgia, serif;
+      --body: 'Jost', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+    button { cursor: pointer; font-family: var(--body); }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.75rem 3rem;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(247,245,242,0.96);
+      backdrop-filter: blur(8px);
+      padding: 1.1rem 3rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+    .nav-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .nav-link:hover { color: var(--charcoal); }
+    .cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: none;
+      border: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .cart-btn:hover { color: var(--charcoal); }
+    .snipcart-items-count {
+      background: var(--charcoal);
+      color: var(--cream);
+      border-radius: 50%;
+      width: 18px; height: 18px;
+      font-size: 0.62rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+      cursor: pointer;
+    }
+    .burger span {
+      display: block;
+      width: 22px; height: 1px;
+      background: var(--charcoal);
+      transition: all 0.3s;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .page { display: none; }
+    .page.active { display: block; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      padding-top: 5rem;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3rem;
+      animation: fadeUp 0.9s ease both;
+    }
+    .eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.12;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title em { font-style: italic; color: var(--mid); }
+    .hero-sub {
+      color: var(--mid);
+      font-size: 0.88rem;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+      max-width: 36ch;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-image { overflow: hidden; animation: fadeIn 1.2s ease both 0.3s; }
+    .hero-image img { width: 100%; height: 100%; }
+    .btn {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border: 1px solid var(--charcoal);
+      transition: all 0.25s ease;
+      font-family: var(--body);
+      cursor: pointer;
+    }
+    .btn-dark { background: var(--charcoal); color: var(--cream); }
+    .btn-dark:hover { background: #333; border-color: #333; }
+    .btn-ghost { background: transparent; color: var(--charcoal); }
+    .btn-ghost:hover { background: var(--charcoal); color: var(--cream); }
+    .section { padding: 6rem 3rem; }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+    }
+    .section-title { font-family: var(--display); font-size: 2rem; font-weight: 400; }
+    .section-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .section-link:hover { color: var(--charcoal); }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .product-card { cursor: pointer; }
+    .product-card-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: #ede9e3;
+      margin-bottom: 1rem;
+    }
+    .product-card-image img {
+      width: 100%; height: 100%;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .product-card:hover .product-card-image img { transform: scale(1.04); }
+    .product-card-overlay {
+      position: absolute; inset: 0;
+      background: rgba(26,26,24,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .product-card:hover .product-card-overlay { opacity: 1; }
+    .product-card-overlay span {
+      color: white;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.7);
+      padding: 0.6rem 1.2rem;
+    }
+    .product-card-name { font-family: var(--display); font-size: 1.2rem; font-weight: 400; margin-bottom: 0.2rem; }
+    .product-card-type { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.3rem; }
+    .product-card-price { font-size: 0.9rem; }
+    .banner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 55vh;
+      margin: 0 3rem 6rem;
+      border: 1px solid rgba(0,0,0,0.07);
+    }
+    .banner-text {
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.25rem;
+      background: var(--warm-white);
+    }
+    .banner-title { font-family: var(--display); font-size: 2.4rem; font-weight: 300; line-height: 1.2; }
+    .banner-body { color: var(--mid); font-size: 0.88rem; line-height: 1.85; max-width: 36ch; }
+    .banner-image { overflow: hidden; }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      padding-top: 5rem;
+    }
+    .detail-image {
+      position: sticky;
+      top: 5rem;
+      height: calc(100vh - 5rem);
+      overflow: hidden;
+      background: #ede9e3;
+    }
+    .detail-image img { width: 100%; height: 100%; }
+    .detail-info {
+      padding: 4rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .detail-breadcrumb {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      cursor: pointer;
+    }
+    .detail-breadcrumb:hover { color: var(--charcoal); }
+    .detail-title { font-family: var(--display); font-size: 2.4rem; font-weight: 400; line-height: 1.2; }
+    .detail-type { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); }
+    .detail-price { font-size: 1.3rem; }
+    .detail-desc {
+      color: var(--mid);
+      font-size: 0.88rem;
+      line-height: 1.85;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      padding-top: 1.25rem;
+    }
+    .size-label { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.75rem; }
+    .size-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .size-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--light);
+      background: none;
+      font-size: 0.8rem;
+      color: var(--charcoal);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--body);
+    }
+    .size-btn:hover { border-color: var(--charcoal); }
+    .size-btn.active { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+    .add-to-cart {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: var(--body);
+    }
+    .add-to-cart:hover { background: #333; }
+    .detail-meta { border-top: 1px solid rgba(0,0,0,0.07); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .detail-meta p { font-size: 0.8rem; color: var(--mid); }
+    .about-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+      padding-top: 5rem;
+    }
+    .about-hero-text { display: flex; flex-direction: column; justify-content: center; padding: 4rem 3rem; }
+    .about-title { font-family: var(--display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.2; margin-top: 1rem; }
+    .about-title em { font-style: italic; color: var(--mid); }
+    .about-hero-image { overflow: hidden; }
+    .about-hero-image img { width: 100%; height: 100%; }
+    .about-body { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 5rem 3rem; }
+    .about-body h2 { font-family: var(--display); font-size: 1.6rem; font-weight: 400; margin-bottom: 1.25rem; }
+    .about-body p { color: var(--mid); font-size: 0.9rem; line-height: 1.9; margin-bottom: 1rem; }
+    .catalog-header { text-align: center; padding: 8rem 3rem 4rem; max-width: 600px; margin: 0 auto; }
+    .catalog-title { font-family: var(--display); font-size: 2.8rem; font-weight: 300; margin-bottom: 1rem; }
+    .catalog-sub { color: var(--mid); font-size: 0.88rem; line-height: 1.85; }
+    .catalog-grid { padding: 0 3rem 6rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 2.5rem; }
+    footer { border-top: 1px solid rgba(0,0,0,0.08); padding: 4rem 3rem 2rem; margin-top: 2rem; }
+    .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+    .footer-logo { font-family: var(--display); font-size: 1.3rem; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+    .footer-tagline { color: var(--mid); font-size: 0.82rem; }
+    .footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links button { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); background: none; border: none; text-align: left; transition: color 0.2s; }
+    .footer-links button:hover { color: var(--charcoal); }
+    .footer-info { text-align: right; color: var(--mid); font-size: 0.8rem; line-height: 1.8; }
+    .footer-bottom { border-top: 1px solid rgba(0,0,0,0.06); padding-top: 1.5rem; text-align: center; font-size: 0.72rem; color: var(--light); letter-spacing: 0.08em; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @media (max-width: 768px) {
+      nav { padding: 1.4rem 1.5rem; }
+      nav.scrolled { padding: 1rem 1.5rem; }
+      .burger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--cream);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+      .nav-link { font-size: 1rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-content { padding: 7rem 1.5rem 3rem; }
+      .hero-image { height: 55vw; }
+      .section { padding: 4rem 1.5rem; }
+      .banner { grid-template-columns: 1fr; margin: 0 1.5rem 4rem; }
+      .banner-image { height: 55vw; order: -1; }
+      .banner-text { padding: 2.5rem 1.5rem; }
+      .detail-grid { grid-template-columns: 1fr; padding-top: 4.5rem; }
+      .detail-image { position: relative; top: 0; height: 70vw; }
+      .detail-info { padding: 2.5rem 1.5rem; }
+      .about-hero { grid-template-columns: 1fr; }
+      .about-hero-text { padding: 7rem 1.5rem 3rem; }
+      .about-hero-image { height: 60vw; }
+      .about-body { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2.5rem; }
+      .catalog-header { padding: 6rem 1.5rem 3rem; }
+      .catalog-grid { padding: 0 1.5rem 4rem; }
+      .catalog-title { font-size: 2rem; }
+      .footer { padding: 3rem 1.5rem 2rem; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-info { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+    .banner-image img { width: 100%; height: 100%; }
+  <nav id="nav">
+  <div class="nav-logo" onclick="showPage('home')">Randle.Art</div>
+  <div class="nav-links" id="nav-links">
+    <button class="nav-link" onclick="showPage('prints')">Prints</button>
+    <button class="nav-link" onclick="showPage('apparel')">Apparel</button>
+    <button class="nav-link" onclick="showPage('about')">About</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <button class="snipcart-checkout cart-btn">
+      Cart <span class="snipcart-items-count"></span>
+    </button>
+    <button class="burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Original Works</p>
+      <h1 class="hero-title">Art made to<br><em>live with.</em></h1>
+      <p class="hero-sub">Fine art prints and apparel, produced on demand and delivered anywhere in the world.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-dark" onclick="showPage('prints')">Shop Prints</button>
+        <button class="btn btn-ghost" onclick="showPage('apparel')">Shop Apparel</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1200&q=85" alt="Featured artwork" />
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Featured Works</h2>
+      <button class="section-link" onclick="showPage('prints')">View all →</button>
+    </div>
+    <div class="product-grid" id="featured-grid"></div>
+  </section>
+  <div class="banner">
+    <div class="banner-text">
+      <p class="eyebrow">About the work</p>
+      <h2 class="banner-title">Each piece<br>is original.</h2>
+      <p class="banner-body">Every print and garment begins with an original work — brought to life through Gelato's global network, so your order is made and shipped locally, wherever you are.</p>
+      <button class="btn btn-dark" onclick="showPage('about')">Learn more</button>
+    </div>
+    <div class="banner-image">
+      <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80" alt="Artist at work" />
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-prints">
+  <div class="catalog-header">
+    <p class="eyebrow">Collection</p>
+    <h1 class="catalog-title">Fine Art Prints</h1>
+    <p class="catalog-sub">Giclée prints on 300gsm archival paper. Available in multiple sizes. Each print is made to order via Gelato's global print network.</p>
+  </div>
+  <div class="catalog-grid" id="prints-grid"></div>
+</div>
+
+<div class="page" id="page-apparel">
+  <div class="catalog-header">
+    <p class="eyebrow">Collection</p>
+    <h1 class="catalog-title">Apparel</h1>
+    <p class="catalog-sub">100% organic cotton tees printed with water-based inks. Sustainably produced on demand and shipped globally via Gelato.</p>
+  </div>
+  <div class="catalog-grid" id="apparel-grid"></div>
+</div>
+
+<div class="page" id="page-detail">
+  <div class="detail-grid">
+    <div class="detail-image">
+      <img id="detail-img" src="" alt="" />
+    </div>
+    <div class="detail-info">
+      <p class="detail-breadcrumb" id="detail-back">← Back</p>
+      <h1 class="detail-title" id="detail-name"></h1>
+      <p class="detail-type" id="detail-type"></p>
+      <p class="detail-price" id="detail-price"></p>
+      <p class="detail-desc" id="detail-desc"></p>
+      <div>
+        <p class="size-label">Size</p>
+        <div class="size-options" id="size-options"></div>
+      </div>
+      <button class="add-to-cart snipcart-add-item"
+        id="add-to-cart-btn"
+        data-item-id=""
+        data-item-price=""
+        data-item-url="/products.json"
+        data-item-description=""
+        data-item-image=""
+        data-item-name="">
+        Add to Cart
+      </button>
+      <div class="detail-meta" id="detail-meta"></div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="about-hero-text">
+      <p class="eyebrow">The Artist</p>
+      <h1 class="about-title">About<br><em>the Studio</em></h1>
+    </div>
+    <div class="about-hero-image">
+      <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80" alt="Studio" />
+    </div>
+  </div>
+  <div class="about-body">
+    <div>
+      <h2>The Work</h2>
+      <p>[Replace this with your own artist statement.]</p>
+      <p>[Add your background, influences, or themes you explore.]</p>
+    </div>
+    <div>
+      <h2>How it's made</h2>
+      <p>Every piece begins as an original work. Prints are produced as fine art giclées on 300gsm archival paper, and apparel is printed on 100% organic cotton using water-based inks.</p>
+      <p>All orders are fulfilled through Gelato's global production network — printed as close to you as possible.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="footer-logo">Randle.Art</span>
+      <p class="footer-tagline">Original art, globally delivered.</p>
+    </div>
+    <div class="footer-links">
+      <button onclick="showPage('prints')">Prints</button>
+      <button onclick="showPage('apparel')">Apparel</button>
+      <button onclick="showPage('about')">About</button>
+    </div>
+    <div class="footer-info">
+      <p>All orders fulfilled by Gelato.</p>
+      <p>Printed locally, shipped globally.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Randle.Art. All rights reserved.</p>
+  </div>
+</footer>
+
+<div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY" data-config-modal-style="side"></div>
+<script async src="https://cdn.snipcart.com/themes/v3.7.5/default/snipcart.js"></script>
+<script>
+  const products = [
+    {
+      id: "print-001",
+      name: "Untitled No. 1",
+      type: "print",
+      description: "Fine art giclée print on 300gsm archival paper. Rich, museum-quality reproduction of the original work.",
+      price: 45.00,
+      sizes: [
+        { label: '8x10"', price: 45.00 },
+        { label: '11x14"', price: 65.00 },
+        { label: '16x20"', price: 95.00 },
+      ],
+      image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&q=80",
+      featured: true,
+    },
+    {
+      id: "print-002",
+      name: "Untitled No. 2",
+      type: "print",
+      description: "Fine art giclée print on 300gsm archival paper.",
+      price: 45.00,
+      sizes: [
+        { label: '8x10"', price: 45.00 },
+        { label: '11x14"', price: 65.00 },
+        { label: '16x20"', price: 95.00 },
+      ],
+      image: "https://images.unsplash.com/photo-1549490349-8643362247b5?w=800&q=80",
+      featured: true,
+    },
+    {
+      id: "print-003",
+      name: "Untitled No. 3",
+      type: "print",
+      description: "Fine art giclée print on 300gsm archival paper.",
+      price: 45.00,
+      sizes: [
+        { label: '8x10"', price: 45.00 },
+        { label: '11x14"', price: 65.00 },
+        { label: '16x20"', price: 95.00 },
+      ],
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      featured: false,
+    },
+    {
+      id: "tshirt-001",
+      name: "Studio Tee — No. 1",
+      type: "apparel",
+      description: "100% organic cotton unisex tee. Original artwork printed with water-based inks. Sustainably produced via Gelato.",
+      price: 38.00,
+      sizes: [
+        { label: "S", price: 38.00 },
+        { label: "M", price: 38.00 },
+        { label: "L", price: 38.00 },
+        { label: "XL", price: 38.00 },
+      ],
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
+      featured: true,
+    },
+    {
+      id: "tshirt-002",
+      name: "Studio Tee — No. 2",
+      type: "apparel",
+      description: "100% organic cotton unisex tee. Original artwork printed with water-based inks.",
+      price: 38.00,
+      sizes: [
+        { label: "S", price: 38.00 },
+        { label: "M", price: 38.00 },
+        { label: "L", price: 38.00 },
+        { label: "XL", price: 38.00 },
+      ],
+      image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=800&q=80",
+      featured: false,
+    },
+  ];
+
+  let currentProduct = null;
+  let selectedSizeIndex = 0;
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  function toggleMenu() {
+    document.getElementById('nav-links').classList.toggle('open');
+    document.getElementById('burger').classList.toggle('open');
+  }
+
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    window.scrollTo(0, 0);
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('burger').classList.remove('open');
+  }
+
+  function productCardHTML(p) {
+    return `
+      <div class="product-card" onclick="showDetail('${p.id}')">
+        <div class="product-card-image">
+          <img src="${p.image}" alt="${p.name}" loading="lazy" />
+          <div class="product-card-overlay"><span>View Product</span></div>
+        </div>
+        <p class="product-card-name">${p.name}</p>
+        <p class="product-card-type">${p.type === 'print' ? 'Fine Art Print' : 'Apparel'}</p>
+        <p class="product-card-price">From $${p.price.toFixed(2)}</p>
+      </div>
+    `;
+  }
+
+  document.getElementById('featured-grid').innerHTML =
+    products.filter(p => p.featured).map(productCardHTML).join('');
+  document.getElementById('prints-grid').innerHTML =
+    products.filter(p => p.type === 'print').map(productCardHTML).join('');
+  document.getElementById('apparel-grid').innerHTML =
+    products.filter(p => p.type === 'apparel').map(productCardHTML).join('');
+
+  function showDetail(id) {
+    const p = products.find(x => x.id === id);
+    if (!p) return;
+    currentProduct = p;
+    selectedSizeIndex = 0;
+    document.getElementById('detail-img').src = p.image;
+    document.getElementById('detail-img').alt = p.name;
+    document.getElementById('detail-name').textContent = p.name;
+    document.getElementById('detail-type').textContent = p.type === 'print' ? 'Fine Art Print' : 'Original Artwork Apparel';
+    document.getElementById('detail-desc').textContent = p.description;
+    const backPage = p.type === 'print' ? 'prints' : 'apparel';
+    document.getElementById('detail-back').onclick = () => showPage(backPage);
+    const meta = p.type === 'print'
+      ? `<p>✦ Fulfilled by Gelato — printed locally, shipped globally</p>
+         <p>✦ Made to order — please allow 3–7 business days</p>
+         <p>✦ Ships flat in protective packaging</p>`
+      : `<p>✦ Fulfilled by Gelato — printed locally, shipped globally</p>
+         <p>✦ Made to order — please allow 3–7 business days</p>
+         <p>✦ 100% organic cotton, washes well</p>`;
+    document.getElementById('detail-meta').innerHTML = meta;
+    renderSizes();
+    showPage('detail');
+  }
+
+  function renderSizes() {
+    const p = currentProduct;
+    const selected = p.sizes[selectedSizeIndex];
+    document.getElementById('detail-price').textContent = '$' + selected.price.toFixed(2);
+    const sizeHTML = p.sizes.map((s, i) => `
+      <button class="size-btn ${i === selectedSizeIndex ? 'active' : ''}"
+        onclick="selectSize(${i})">${s.label}</button>
+    `).join('');
+    document.getElementById('size-options').innerHTML = sizeHTML;
+    const btn = document.getElementById('add-to-cart-btn');
+    const itemId = p.id + '-' + selected.label.replace(/[^a-z0-9]/gi, '');
+    btn.setAttribute('data-item-id', itemId);
+    btn.setAttribute('data-item-price', selected.price);
+    btn.setAttribute('data-item-name', p.name + ' — ' + selected.label);
+    btn.setAttribute('data-item-image', p.image);
+    btn.setAttribute('data-item-description', p.description);
+  }
+
+  function selectSize(i) {
+    selectedSizeIndex = i;
+    renderSizes();
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
