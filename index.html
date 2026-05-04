@@ -715,7 +715,14 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-<div hidden id="snipcart" data-api-key="Y2U2ZGJhMTYtNDViYi00Yzk4LWIzY2YtZTMxNGUyNjdjZjUzNjM5MTI1NjM3NDkxMjU2NTcx" data-config-modal-style="side"></div>
-<script async src="https://cdn.snipcart.com/themes/v3.7.5/default/snipcart.js"></script>
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.5/default/snipcart.css" />
+<script>
+  window.SnipcartSettings = {
+    publicApiKey: "Y2U2ZGJhMTYtNDViYi00Yzk4LWIzY2YtZTMxNGUyNjdjZjUzNjM5MTI1NjM3NDkxMjU2NTcx",
+    loadStrategy: "on-user-interaction",
+  };
+  (function(){var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.7.5");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var m=window.SnipcartSettings.domain.includes("snipcart.com"),f=m?`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`:`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`;var e=document.getElementsByTagName("head")[0],a=document.createElement("script");a.src=f;a.async=!0;e.appendChild(a)})();
+</script>
+<div id="snipcart" data-config-modal-style="side"></div>
 </body>
 </html>
