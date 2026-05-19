@@ -552,52 +552,24 @@
 <script>
   const products = [
     {
-      id: "print-001",
-      name: "Untitled No. 1",
+      id: "ptn-print",
+      name: "PTN",
       type: "print",
-      description: "Fine art giclée print on 300gsm archival paper. Rich, museum-quality reproduction of the original work.",
+      description: "Fine art giclée print on 300gsm archival paper. Museum-quality reproduction of the original work.",
       price: 45.00,
       sizes: [
         { label: '8x10"', price: 45.00 },
         { label: '11x14"', price: 65.00 },
         { label: '16x20"', price: 95.00 },
       ],
-      image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&q=80",
+      image: "https://raw.githubusercontent.com/Randle610/Randle.Art/main/PTN.png",
       featured: true,
     },
     {
-      id: "print-002",
-      name: "Untitled No. 2",
-      type: "print",
-      description: "Fine art giclée print on 300gsm archival paper.",
-      price: 45.00,
-      sizes: [
-        { label: '8x10"', price: 45.00 },
-        { label: '11x14"', price: 65.00 },
-        { label: '16x20"', price: 95.00 },
-      ],
-      image: "https://images.unsplash.com/photo-1549490349-8643362247b5?w=800&q=80",
-      featured: true,
-    },
-    {
-      id: "print-003",
-      name: "Untitled No. 3",
-      type: "print",
-      description: "Fine art giclée print on 300gsm archival paper.",
-      price: 45.00,
-      sizes: [
-        { label: '8x10"', price: 45.00 },
-        { label: '11x14"', price: 65.00 },
-        { label: '16x20"', price: 95.00 },
-      ],
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-      featured: false,
-    },
-    {
-      id: "tshirt-001",
-      name: "Studio Tee — No. 1",
+      id: "ptn-apparel",
+      name: "PTN Tee",
       type: "apparel",
-      description: "100% organic cotton unisex tee. Original artwork printed with water-based inks. Sustainably produced via Gelato.",
+      description: "100% organic cotton unisex tee. PTN artwork printed with water-based inks. Sustainably produced via Gelato.",
       price: 38.00,
       sizes: [
         { label: "S", price: 38.00 },
@@ -605,14 +577,28 @@
         { label: "L", price: 38.00 },
         { label: "XL", price: 38.00 },
       ],
-      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
+      image: "https://raw.githubusercontent.com/Randle610/Randle.Art/main/PTN.png",
       featured: true,
     },
     {
-      id: "tshirt-002",
-      name: "Studio Tee — No. 2",
+      id: "trinity-print",
+      name: "Trinity",
+      type: "print",
+      description: "Fine art giclée print on 300gsm archival paper. Museum-quality reproduction of the original work.",
+      price: 45.00,
+      sizes: [
+        { label: '8x10"', price: 45.00 },
+        { label: '11x14"', price: 65.00 },
+        { label: '16x20"', price: 95.00 },
+      ],
+      image: "https://raw.githubusercontent.com/Randle610/Randle.Art/main/Trinity.png",
+      featured: true,
+    },
+    {
+      id: "trinity-apparel",
+      name: "Trinity Tee",
       type: "apparel",
-      description: "100% organic cotton unisex tee. Original artwork printed with water-based inks.",
+      description: "100% organic cotton unisex tee. Trinity artwork printed with water-based inks. Sustainably produced via Gelato.",
       price: 38.00,
       sizes: [
         { label: "S", price: 38.00 },
@@ -620,11 +606,10 @@
         { label: "L", price: 38.00 },
         { label: "XL", price: 38.00 },
       ],
-      image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=800&q=80",
-      featured: false,
+      image: "https://raw.githubusercontent.com/Randle610/Randle.Art/main/Trinity.png",
+      featured: true,
     },
   ];
-
   let currentProduct = null;
   let selectedSizeIndex = 0;
 
