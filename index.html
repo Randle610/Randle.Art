@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.5/default/snipcart.css" />
   <style>
     :root {
       --cream: #f7f5f2;
@@ -245,6 +244,7 @@
     .banner-title { font-family: var(--display); font-size: 2.4rem; font-weight: 300; line-height: 1.2; }
     .banner-body { color: var(--mid); font-size: 0.88rem; line-height: 1.85; max-width: 36ch; }
     .banner-image { overflow: hidden; }
+    .banner-image img { width: 100%; height: 100%; }
     .detail-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -383,7 +383,6 @@
   </style>
 </head>
 <body>
-    .banner-image img { width: 100%; height: 100%; }
   <nav id="nav">
   <div class="nav-logo" onclick="showPage('home')">Randle.Art</div>
   <div class="nav-links" id="nav-links">
@@ -413,7 +412,7 @@
       </div>
     </div>
     <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1200&q=85" alt="Featured artwork" />
+      <img src="https://raw.githubusercontent.com/Randle610/Randle.Art/main/PTN.PNG" alt="PTN artwork" />
     </div>
   </section>
   <section class="section">
@@ -431,7 +430,7 @@
       <button class="btn btn-dark" onclick="showPage('about')">Learn more</button>
     </div>
     <div class="banner-image">
-      <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80" alt="Artist at work" />
+      <img src="https://raw.githubusercontent.com/Randle610/Randle.Art/main/Trinity.PNG" alt="Trinity artwork" />
     </div>
   </div>
 </div>
@@ -473,25 +472,7 @@
         id="add-to-cart-btn"
         data-item-id=""
         data-item-price=""
-        data-item-url="[
-  { "id": "print-001-8x10", "name": "Untitled No. 1 — 8x10\"", "price": 45.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "print-001-11x14", "name": "Untitled No. 1 — 11x14\"", "price": 65.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "print-001-16x20", "name": "Untitled No. 1 — 16x20\"", "price": 95.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "print-002-8x10", "name": "Untitled No. 2 — 8x10\"", "price": 45.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "print-002-11x14", "name": "Untitled No. 2 — 11x14\"", "price": 65.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "print-002-16x20", "name": "Untitled No. 2 — 16x20\"", "price": 95.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "print-003-8x10", "name": "Untitled No. 3 — 8x10\"", "price": 45.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "print-003-11x14", "name": "Untitled No. 3 — 11x14\"", "price": 65.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "print-003-16x20", "name": "Untitled No. 3 — 16x20\"", "price": 95.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "tshirt-001-S", "name": "Studio Tee No. 1 — S", "price": 38.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "tshirt-001-M", "name": "Studio Tee No. 1 — M", "price": 38.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "tshirt-001-L", "name": "Studio Tee No. 1 — L", "price": 38.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "tshirt-001-XL", "name": "Studio Tee No. 1 — XL", "price": 38.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "tshirt-002-S", "name": "Studio Tee No. 2 — S", "price": 38.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "tshirt-002-M", "name": "Studio Tee No. 2 — M", "price": 38.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "tshirt-002-L", "name": "Studio Tee No. 2 — L", "price": 38.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" },
-  { "id": "tshirt-002-XL", "name": "Studio Tee No. 2 — XL", "price": 38.00, "url": "https://visionary-panda-600d83.netlify.app/products.json" }
-]"
+        data-item-url="https://visionary-panda-600d83.netlify.app/products.json"
         data-item-description=""
         data-item-image=""
         data-item-name="">
@@ -509,7 +490,7 @@
       <h1 class="about-title">About<br><em>the Studio</em></h1>
     </div>
     <div class="about-hero-image">
-      <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80" alt="Studio" />
+      <img src="https://raw.githubusercontent.com/Randle610/Randle.Art/main/PTN.PNG" alt="Studio" />
     </div>
   </div>
   <div class="about-body">
@@ -546,9 +527,16 @@
     <p>© <span id="year"></span> Randle.Art. All rights reserved.</p>
   </div>
 </footer>
+<script>
+  window.SnipcartSettings = {
+    publicApiKey: "Y2U2ZGJhMTYtNDViYi00Yzk4LWIzY2YtZTMxNGUyNjdjZjUzNjM5MTI1NjM3NDkxMjU2NTcx",
+  };
+  (function(){var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.7.5");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var m=window.SnipcartSettings.domain.includes("snipcart.com"),f=m?`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`:`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`;var e=document.getElementsByTagName("head")[0],a=document.createElement("script");a.src=f;a.async=!0;e.appendChild(a)})();
+</script>
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.5/default/snipcart.css" />
+<div id="snipcart" data-config-modal-style="side"></div>
 
-<div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY" data-config-modal-style="side"></div>
-
+<script>
   const products = [
     {
       id: "ptn-print",
@@ -699,13 +687,6 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.5/default/snipcart.css" />
-<script>
-  window.SnipcartSettings = {
-    publicApiKey: "Y2U2ZGJhMTYtNDViYi00Yzk4LWIzY2YtZTMxNGUyNjdjZjUzNjM5MTI1NjM3NDkxMjU2NTcx",
-  };
-  (function(){var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.7.5");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var m=window.SnipcartSettings.domain.includes("snipcart.com"),f=m?`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`:`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`;var e=document.getElementsByTagName("head")[0],a=document.createElement("script");a.src=f;a.async=!0;e.appendChild(a)})();
-</script>
-<div id="snipcart" data-config-modal-style="side"></div>
+
 </body>
 </html>
